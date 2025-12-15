@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Demo Render Fullstack</title>
+    <meta charset="UTF-8">
+    <title>Demo Render Fullstack</title>
 </head>
 <body>
-  <h1>Nguyễn Thị Trúc My _ DH52201070</h1>
-  
-  <button onclick="loadData()">Lấy dữ liệu từ Backend</button>
-  <p id="result"></p>
 
-  <script>
-    async function loadData() {
-      try {
-        // Relative URL -> cùng domain với backend
-        const response = await fetch("/backend/api.php");
-        if (!response.ok) throw new Error(response.status);
-        const data = await response.json();
-        document.getElementById("result").innerText = data.message;
-      } catch (err) {
-        console.error("API error:", err);
-        document.getElementById("result").innerText = "Lỗi gọi API";
-      }
-    }
-  </script>
+    <h1>Nguyễn Thị Trúc My _ Cuối kì</h1>
+
+    <button onclick="loadData()">Lấy dữ liệu từ Backend</button>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
 </body>
 </html>
