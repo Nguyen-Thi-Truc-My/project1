@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Git - CI/CD</title>
+</head>
+<body>
+    <h1>Frontend HTML</h1>
+    <button onclick="loadData()">Lấy dữ liệu từ Backend</button>
+
+    <p id="result"></p>
+
+    <script>
+        function loadData() {
+            fetch("http://localhost/project1/backend/api.php")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").innerText = data.message;
+                })
+                .catch(err => {
+                    document.getElementById("result").innerText = "Lỗi gọi API";
+                });
+        }
+    </script>
+</body>
+</html>
