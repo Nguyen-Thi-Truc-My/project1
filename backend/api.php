@@ -1,6 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *"); // cho phép tất cả domain gọi
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *"); // Cho phép frontend từ domain khác gọi
+
 
 // Kết nối DB và trả dữ liệu
 $host = "sql205.infinityfree.com";
