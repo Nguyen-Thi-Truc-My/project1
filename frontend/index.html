@@ -2,32 +2,26 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Demo Git - CI/CD</title>
+  <title>Demo Render Fullstack</title>
 </head>
 <body>
-  <h1>Frontend HTML - CI/CD</h1>
+  <h1>Frontend HTML - CI/CD Render</h1>
   <button onclick="loadData()">Lấy dữ liệu từ Backend</button>
   <p id="result"></p>
 
   <script>
     async function loadData() {
       try {
-        // URL backend phải là HTTPS public domain
-        const response = await fetch("https://trucmy.infinityfreeapp.com/backend/api.php");
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
+        // Sử dụng relative URL để frontend gọi backend cùng domain
+        const response = await fetch("/backend/api.php");
+        if (!response.ok) throw new Error(response.status);
         const data = await response.json();
         document.getElementById("result").innerText = data.message;
       } catch (err) {
-        console.error("Lỗi gọi API:", err);
+        console.error("API error:", err);
         document.getElementById("result").innerText = "Lỗi gọi API";
       }
     }
   </script>
 </body>
 </html>
-
-
