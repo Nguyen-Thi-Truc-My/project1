@@ -2,21 +2,19 @@ name: Deploy to Render
 
 on:
   push:
-    branches: [ master ]   # trigger CI/CD khi push master
+    branches: [ master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Deploy lên Render
       - name: Deploy to Render
         uses: render-examples/deploy-to-render@v1
         with:
-          api-key: ${{ secrets.RENDER_API_KEY }}       # Render API key
-          service-id: ${{ secrets.RENDER_SERVICE_ID }} # ID Web Service trên Render
-          branch: master                               # branch để deploy
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          branch: master

@@ -1,16 +1,15 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+header("Access-Control-Allow-Origin: *"); 
 header("Content-Type: application/json");
 
-
-
-// Kết nối DB và trả dữ liệu
-$host = "sql205.infinityfree.com";
-$user = "if0_40684966";
-$pass = "lF9REx2NKJi";
-$dbname = "if0_40684966_project1";
+// Thông tin DB (Render PostgreSQL hoặc MySQL add-on)
+$host = getenv('DB_HOST');      // render environment variables
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$dbname = getenv('DB_NAME');
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {
@@ -26,4 +25,5 @@ if ($row = $result->fetch_assoc()) {
 } else {
     echo json_encode(["status"=>"success","message"=>"No data"]);
 }
+
 $conn->close();
