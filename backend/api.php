@@ -1,6 +1,9 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // cho phép tất cả domain gọi
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
+
 
 
 // Kết nối DB và trả dữ liệu
