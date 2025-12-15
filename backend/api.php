@@ -1,29 +1,32 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+header("Access-Control-Allow-Origin: *"); // cho phép domain khác gọi
 header("Content-Type: application/json");
 
-// Thông tin DB
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "demo_git";
+// Thông tin DB InfinityFree
+$host = "sql205.infinityfree.com";
+$user = "if0_40684966";
+$pass = "lF9REx2NKJi";
+$dbname = "if0_40684966_project1";
 
-// Kết nối
+// Kết nối DB
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// Kiểm tra lỗi
 if ($conn->connect_error) {
     echo json_encode([
         "status" => "error",
-        "message" => "Kết nối DB thất bại"
+        "message" => $conn->connect_error
     ]);
     exit;
 }
 
-// Query
+// Lấy dữ liệu
 $sql = "SELECT message FROM demo LIMIT 1";
 $result = $conn->query($sql);
 
-if ($result && $row = $result->fetch_assoc()) {
+if ($row = $result->fetch_assoc()) {
     echo json_encode([
         "status" => "success",
         "message" => $row["message"]
@@ -31,7 +34,7 @@ if ($result && $row = $result->fetch_assoc()) {
 } else {
     echo json_encode([
         "status" => "success",
-        "message" => "Hello from Backend PHP"
+        "message" => "No data"
     ]);
 }
 
