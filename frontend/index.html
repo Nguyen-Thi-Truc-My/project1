@@ -12,12 +12,12 @@
 
     <script>
         function loadData() {
-            fetch("http://localhost/project1/backend/api.php")
-                .then(response => response.json())
+            fetch("http://trucmy.infinityfreeapp.com/backend/api.php")
+                .then(res => res.json())
                 .then(data => {
                     document.getElementById("result").innerText = data.message;
                 })
-                .catch(err => {
+                .catch(() => {
                     document.getElementById("result").innerText = "Lỗi gọi API";
                 });
         }
